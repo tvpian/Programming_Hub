@@ -77,33 +77,33 @@ class LinkedList:
         # If there is only element in the list
         elif self.head == self.tail:
             # Popping the last element from the list
+            temp = self.head
             print("Last element {} is popped from the list".format(self.tail.value))
             self.head = None
             self.tail = None
             print("Head is pointing to None")
             print("Tail is pointing to None")
             print("------------------------------------------")
+            return temp
         else:
             temp = self.head
             while temp.next.next != None:
                 temp = temp.next
             print("Last element {} is popped from the list".format(self.tail.value))
             self.tail = temp
+            temp = self.tail.next
             self.tail.next = None
             print("Head is pointing to {}".format(self.head.value))
             print("Tail is pointing to {}".format(self.tail.value))
             print("------------------------------------------")
+            return temp
 
 
 new_list = LinkedList(6)
 new_list.append(10)
-new_list.append(3)
-new_list.append(5)
+# new_list.append(3)
+# new_list.append(5)
 new_list.print_list()
-new_list.delete_node(5)
-new_list.print_list()
-new_list.pop_node()
-new_list.pop_node()
-new_list.pop_node()
-new_list.pop_node()
-new_list.print_list()
+new_list.delete_node(7)
+s = new_list.pop_node()
+print("Value: ", s.value)
