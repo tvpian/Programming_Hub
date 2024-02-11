@@ -35,13 +35,17 @@ class LinkedList:
         print("------------------------------------------")
 
     def delete_node(self, value):
+        # Only one item in the list
         if self.head == self.tail:
-            self.head.next = None
-            self.tail.next = None
-            print("{} is deleted from the list".format(value))
-            print("Head is pointing to {}".format(self.head.value))
-            print("Tail is pointing to {}".format(self.tail.value))
-            print("------------------------------------------")
+            if self.head.value == value:
+                self.head.next = None
+                self.tail.next = None
+                print("{} is deleted from the list".format(value))
+                print("Head is pointing to {}".format(self.head.value))
+                print("Tail is pointing to {}".format(self.tail.value))
+                print("------------------------------------------")
+            else:
+                print("Item not found in the list")
         elif self.head.value == value:
             temp = self.head
             self.head = self.head.next
@@ -52,15 +56,19 @@ class LinkedList:
             print("------------------------------------------")
         else:
             temp = self.head
+            del_check = False
             while temp != self.tail:
                 if temp.next.value == value:
                     temp.next = temp.next.next
                     print("{} is deleted from the list".format(value))
                     print("Head is pointing to {}".format(self.head.value))
                     print("Tail is pointing to {}".format(self.tail.value))
+                    del_check = True
                     print("------------------------------------------")
                     break
                 temp = temp.next
+            if not del_check:
+                print("Item not found in the list")
 
     def pop_node(self):
         # If the list is empty
