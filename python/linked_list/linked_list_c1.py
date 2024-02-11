@@ -11,12 +11,15 @@ class LinkedList:
         self.length = 1
 
     def print_list(self):
-        print("The following are the elements in the list:")
-        temp = self.head
-        while temp != None:
-            print(temp.value)
-            temp = temp.next
-        print("------------------------------------------")
+        if self.length != 0:
+            print("The following are the elements in the list:")
+            temp = self.head
+            while temp != None:
+                print(temp.value)
+                temp = temp.next
+            print("------------------------------------------")
+        else:
+            print("The list is empty")
 
     def append(self, value):
         new_node = Node(value)
@@ -121,12 +124,7 @@ class LinkedList:
         print("Tail is pointing to {}".format(self.tail.value))
 
 
-new_list = LinkedList(6)
-new_list.append(10)
-# new_list.append(3)
-# new_list.append(5)
-new_list.pop_node()
-new_list.pop_node()
-new_list.print_list()
-new_list.prepend(5)
-new_list.print_list()
+if __name__ == "__main__":
+    my_linked_list = LinkedList(10)
+    my_linked_list.pop_node()
+    my_linked_list.print_list()
