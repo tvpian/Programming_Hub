@@ -21,9 +21,12 @@ class LinkedList:
     def append(self, value):
         new_node = Node(value)
         if self.head == self.tail:
-            temp = self.head
-            temp.next = new_node
-            self.tail = new_node
+            if self.head != None:
+                self.head.next = new_node
+                self.tail = new_node
+            else:
+                self.head = new_node
+                self.tail = new_node
         else:
             temp = self.tail
             temp.next = new_node
@@ -43,6 +46,7 @@ class LinkedList:
                 print("{} is deleted from the list".format(value))
                 print("Head is pointing to {}".format(self.head.value))
                 print("Tail is pointing to {}".format(self.tail.value))
+                self.length -= 1
                 print("------------------------------------------")
             else:
                 print("Item not found in the list")
@@ -53,6 +57,7 @@ class LinkedList:
             print("{} is deleted from the list".format(value))
             print("Head is pointing to {}".format(self.head.value))
             print("Tail is pointing to {}".format(self.tail.value))
+            self.length -= 1
             print("------------------------------------------")
         else:
             temp = self.head
@@ -64,6 +69,7 @@ class LinkedList:
                     print("Head is pointing to {}".format(self.head.value))
                     print("Tail is pointing to {}".format(self.tail.value))
                     del_check = True
+                    self.length -= 1
                     print("------------------------------------------")
                     break
                 temp = temp.next
@@ -83,6 +89,7 @@ class LinkedList:
             self.tail = None
             print("Head is pointing to None")
             print("Tail is pointing to None")
+            self.length -= 1
             print("------------------------------------------")
             return temp
         else:
@@ -95,15 +102,31 @@ class LinkedList:
             self.tail.next = None
             print("Head is pointing to {}".format(self.head.value))
             print("Tail is pointing to {}".format(self.tail.value))
+            self.length -= 1
             print("------------------------------------------")
             return temp
+
+    def prepend(self, value):
+        node = Node(value)
+        if self.length == 0:
+            self.head = node
+            self.tail = node
+            self.length += 1
+        else:
+            node.next = self.head
+            self.head = node
+            self.length += 1
+        print("New node with value {} added to the list".format(value))
+        print("Head is pointing to {}".format(self.head.value))
+        print("Tail is pointing to {}".format(self.tail.value))
 
 
 new_list = LinkedList(6)
 new_list.append(10)
 # new_list.append(3)
 # new_list.append(5)
+new_list.pop_node()
+new_list.pop_node()
 new_list.print_list()
-new_list.delete_node(7)
-s = new_list.pop_node()
-print("Value: ", s.value)
+new_list.prepend(5)
+new_list.print_list()
