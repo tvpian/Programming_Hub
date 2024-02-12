@@ -110,6 +110,10 @@ class LinkedList:
             return temp
 
     def prepend(self, value):
+        """ Member function to append items to the beginning of the list
+        Args:
+            value (int): The value of the new item to be added to the  list
+        """
         node = Node(value)
         if self.length == 0:
             self.head = node
