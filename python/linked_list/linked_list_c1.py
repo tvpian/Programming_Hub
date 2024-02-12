@@ -152,12 +152,23 @@ class LinkedList:
             print("------------------------------------------")
             return temp
 
+    def get(self, index):
+        if index < 0 or index > self.length:
+            print("Invalid index. Index out of bounds")
+        else:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            return temp.value
+
 
 if __name__ == "__main__":
-    my_linked_list = LinkedList(10)
+    my_linked_list = LinkedList(0)
+    my_linked_list.append(1)
     my_linked_list.append(2)
-    my_linked_list.append(8)
-    my_linked_list.pop_first()
-    my_linked_list.pop_first()
-    my_linked_list.pop_first()
-    my_linked_list.print_list()
+    my_linked_list.append(3)
+    print(my_linked_list.get(0))
+    print(my_linked_list.get(1))
+    print(my_linked_list.get(2))
+    print(my_linked_list.get(3))
+    print(my_linked_list.get(4))
