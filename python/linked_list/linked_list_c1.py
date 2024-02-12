@@ -127,8 +127,37 @@ class LinkedList:
         print("Head is pointing to {}".format(self.head.value))
         print("Tail is pointing to {}".format(self.tail.value))
 
+    def pop_first(self):
+        if self.length == 0:
+            print("The list is empty")
+            return None
+        elif self.head == self.tail:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            print("{} is popped from the list".format(temp.value))
+            print("Head is pointing to None")
+            print("Tail is pointing to None")
+            print("------------------------------------------")
+            return temp
+        else:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = None
+            self.length -= 1
+            print("{} is popped from the list".format(temp.value))
+            print("Head is pointing to {}".format(self.head.value))
+            print("Tail is pointing to {}".format(self.tail.value))
+            print("------------------------------------------")
+            return temp
+
 
 if __name__ == "__main__":
     my_linked_list = LinkedList(10)
-    my_linked_list.pop_node()
+    my_linked_list.append(2)
+    my_linked_list.append(8)
+    my_linked_list.pop_first()
+    my_linked_list.pop_first()
+    my_linked_list.pop_first()
     my_linked_list.print_list()
