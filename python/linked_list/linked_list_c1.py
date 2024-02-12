@@ -126,6 +126,7 @@ class LinkedList:
         print("New node with value {} added to the list".format(value))
         print("Head is pointing to {}".format(self.head.value))
         print("Tail is pointing to {}".format(self.tail.value))
+        return True
 
     def pop_first(self):
         if self.length == 0:
@@ -159,7 +160,7 @@ class LinkedList:
             temp = self.head
             for _ in range(index):
                 temp = temp.next
-            return temp.value
+            return temp
 
     def set_value(self, index, value):
         if index < 0 or index >= self.length:
@@ -173,6 +174,20 @@ class LinkedList:
             print("Value at index {} updated to {}".format(index, value))
             return True
 
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            print("Invalid index. Index out of bounds")
+            return False
+        elif index == 0:
+            return self.prepend(value)
+        elif index == self.length:
+            return self.append(value)
+        else:
+            temp = self.get(index-1)
+            new_node = Node(value)
+            new_node.next = temp.next
+            temp.next = new_node
+
 
 if __name__ == "__main__":
     my_linked_list = LinkedList(0)
@@ -184,5 +199,7 @@ if __name__ == "__main__":
     print(my_linked_list.get(2))
     print(my_linked_list.get(3))
     my_linked_list.set_value(3, 4)
-    my_linked_list.set_value(1, 2)
+    my_linked_list.set_value(1, 6)
+    my_linked_list.print_list()
+    my_linked_list.insert(2, 10)
     my_linked_list.print_list()
