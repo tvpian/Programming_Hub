@@ -161,6 +161,18 @@ class LinkedList:
                 temp = temp.next
             return temp.value
 
+    def set_value(self, index, value):
+        if index < 0 or index > self.length:
+            print("Invalid index. Index out of bounds")
+            return False
+        else:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            temp.value = value
+            print("Value at index {} updated to {}".format(index, value))
+            return True
+
 
 if __name__ == "__main__":
     my_linked_list = LinkedList(0)
@@ -171,4 +183,6 @@ if __name__ == "__main__":
     print(my_linked_list.get(1))
     print(my_linked_list.get(2))
     print(my_linked_list.get(3))
-    print(my_linked_list.get(4))
+    my_linked_list.set_value(3, 4)
+    my_linked_list.set_value(1, 2)
+    my_linked_list.print_list()
