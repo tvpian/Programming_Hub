@@ -153,7 +153,7 @@ class LinkedList:
             return temp
 
     def get(self, index):
-        if index < 0 or index > self.length:
+        if index < 0 or index >= self.length:
             print("Invalid index. Index out of bounds")
         else:
             temp = self.head
@@ -162,7 +162,7 @@ class LinkedList:
             return temp.value
 
     def set_value(self, index, value):
-        if index < 0 or index > self.length:
+        if index < 0 or index >= self.length:
             print("Invalid index. Index out of bounds")
             return False
         else:
