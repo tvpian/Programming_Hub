@@ -1,16 +1,34 @@
 class Node:
+    """ Class to create a node in the linked list
+    """
+
     def __init__(self, value):
+        """ Constructor to initialize the node with a value
+
+        Args:
+            value (int): The value of the node
+        """
         self.value = value
         self.next = None
 
 
 class LinkedList:
+    """ Class to create a linked list
+    """
+
     def __init__(self, value):
+        """ Constructor to initialize the linked list with a value
+
+        Args:
+            value (int): The value of the first node in the list
+        """
         self.head = Node(value)
         self.tail = self.head
         self.length = 1
 
     def print_list(self):
+        """ Member function to print the elements in the list
+        """
         if self.length != 0:
             print("The following are the elements in the list:")
             temp = self.head
@@ -22,6 +40,11 @@ class LinkedList:
             print("The list is empty")
 
     def append(self, value):
+        """ Member function to append items to the end of the list
+
+        Args:
+            value (int): The value of the new item to be added to the  list
+        """
         new_node = Node(value)
         if self.head == self.tail:
             if self.head != None:
@@ -41,6 +64,11 @@ class LinkedList:
         print("------------------------------------------")
 
     def delete_node(self, value):
+        """ Member function to delete a node from the list
+
+        Args:
+            value (int): The value of the node to be deleted from the list
+        """
         # Only one item in the list
         if self.head == self.tail:
             if self.head.value == value:
@@ -80,6 +108,11 @@ class LinkedList:
                 print("Item not found in the list")
 
     def pop_node(self):
+        """ Member function to pop the last element from the list
+
+        Returns:
+            Node: The last element in the list
+        """
         # If the list is empty
         if self.head == None:
             print("No elements in the list to pop")
@@ -130,6 +163,11 @@ class LinkedList:
         return True
 
     def pop_first(self):
+        """ Member function to pop the first element from the list
+
+        Returns:
+            Node: The first element in the list
+        """
         if self.length == 0:
             print("The list is empty")
             return None
@@ -155,6 +193,14 @@ class LinkedList:
             return temp
 
     def get(self, index):
+        """ Member function to get the value of the node at a given index
+
+        Args:
+            index (int): The index of the node in the list
+
+        Returns:
+            Node: The node at the given index
+        """
         if index < 0 or index >= self.length:
             print("Invalid index. Index out of bounds")
         else:
@@ -164,6 +210,15 @@ class LinkedList:
             return temp
 
     def set_value(self, index, value):
+        """ Member function to set the value of the node at a given index
+
+        Args:
+            index (int): The index of the node in the list
+            value (int): The value to be set at the given index
+
+        Returns:
+            bool: True if the value is set, False otherwise
+        """
         if index < 0 or index >= self.length:
             print("Invalid index. Index out of bounds")
             return False
@@ -176,6 +231,15 @@ class LinkedList:
             return True
 
     def insert(self, index, value):
+        """ Member function to insert a new node at a given index
+
+        Args:
+            index (int): The index of the node in the list
+            value (int): The value to be set at the given index
+
+        Returns:
+            bool: True if the value is set, False otherwise
+        """
         if index < 0 or index > self.length:
             print("Invalid index. Index out of bounds")
             return False
@@ -192,6 +256,11 @@ class LinkedList:
             return True
 
     def remove(self, index):
+        """ Member function to remove a node at a given index
+
+        Args:
+            index (int): The index of the node in the list
+        """
         if index < 0 or index >= self.length+1:
             print("Invalid index. Index out of bounds.")
         elif index == 0:
