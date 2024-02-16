@@ -87,7 +87,8 @@ class LinkedList:
         elif self.head == self.tail:
             # Popping the last element from the list
             temp = self.head
-            print("Last element {} is popped from the list".format(self.tail.value))
+            print("Remaining Last element {} is popped from the list".format(
+                self.tail.value))
             self.head = None
             self.tail = None
             print("Head is pointing to None")
@@ -187,6 +188,23 @@ class LinkedList:
             new_node = Node(value)
             new_node.next = temp.next
             temp.next = new_node
+            self.length += 1
+            return True
+
+    def remove(self, index):
+        if index < 0 or index >= self.length+1:
+            print("Invalid index. Index out of bounds.")
+        elif index == 0:
+            self.pop_first()
+        elif index == self.length-1:
+            self.pop_node()
+        else:
+            temp = self.get(index-1)
+            del_node = temp.next
+            temp.next = temp.next.next
+            del_node.next = None
+            self.length -= 1
+            print("Element at the index {} is deleted.".format(index))
 
 
 if __name__ == "__main__":
@@ -194,12 +212,25 @@ if __name__ == "__main__":
     my_linked_list.append(1)
     my_linked_list.append(2)
     my_linked_list.append(3)
-    print(my_linked_list.get(0))
-    print(my_linked_list.get(1))
-    print(my_linked_list.get(2))
-    print(my_linked_list.get(3))
-    my_linked_list.set_value(3, 4)
-    my_linked_list.set_value(1, 6)
-    my_linked_list.print_list()
+    my_linked_list.append(4)
+    my_linked_list.append(5)
+    # print(my_linked_list.get(0))
+    # print(my_linked_list.get(1))
+    # print(my_linked_list.get(2))
+    # print(my_linked_list.get(3))
+    # my_linked_list.set_value(1, 9)
+    # my_linked_list.print_list()
+    # my_linked_list.set_value(1, 6)
+    # my_linked_list.print_list()
     my_linked_list.insert(2, 10)
+    print(my_linked_list.length)
+    my_linked_list.print_list()
+    my_linked_list.remove(0)
+    print(my_linked_list.length)
+    my_linked_list.print_list()
+    my_linked_list.remove(1)
+    print(my_linked_list.length)
+    my_linked_list.print_list()
+    my_linked_list.remove(2)
+    print(my_linked_list.length)
     my_linked_list.print_list()
